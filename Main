@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    double[] n = new double [2];
+	    boolean rst = true;
+	    String op;
+	    String[] local = {"primeiro", "segundo"};
+	    String fim = "a";
+	    while (rst) {
+	        System.out.println("Escolha a operação. Digite:");
+	        System.out.println("+ para soma");
+	        System.out.println("- para subtração");
+	        System.out.println("x para multiplicação");
+	        System.out.println("/ para divisão");
+	        System.out.println("^ para potência");
+	        System.out.println("v para raiz quadrada");
+	        op = sc.nextLine();
+	        while (!op.equals("+") && !op.equals("-") && !op.equals("x") && !op.equals("/") && !op.equals("^") && !op.equals("v")) {
+	            System.out.println("Digite uma opção válida");
+	            op = sc.nextLine();
+	        }
+	        for (int i = 0; i < 2; i++) {
+	            System.out.println("Escreva o " + local[i] + " número");
+	            try {
+	                n[i] = sc.nextDouble();
+	                if (op.equals("v")) {
+	                    i++;
+	                }
+	            } catch(Exception e) {
+	                System.out.println("Digite um valor válido");
+	                sc.next();
+	                i--;
+	            }
+	        }
+	        Calc.calcular(op, n);
+	        System.out.println("Digite 'q' para finalizar a execução do programa");
+	        sc.nextLine();
+	        fim = sc.nextLine();
+	        if (fim.equals("q")) {
+	            rst = false;
+	        }
+	    }
+	    sc.close();
+	}
+}
