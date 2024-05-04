@@ -1,0 +1,56 @@
+import java.lang.Math;
+
+public class Calc
+{
+    private String op;
+    private double n[];
+    
+    public Calc (String op, double[] n){
+        this.op = op;
+        this.n = n;
+    }
+    public String getOp() {
+        return op;
+    }
+    public void setOp(String op) {
+        this.op = op;
+    }
+    public double[] getN() {
+        return n;
+    }
+    public void setN(double[] n) {
+        this.n = n;
+    }
+    
+    public static void calcular (String op, double[] n) {
+        Calc calc = new Calc(op, n);
+        if (op.equals("+")) {
+            System.out.println("O resultado de " + n[0] + " + " + n[1] + " = " + (n[0] + n[1]));
+            System.out.println();
+        } else if (op.equals("-")) {
+            System.out.println("O resultado de " + n[0] + " - " + n[1] + " = " + (n[0] - n[1]));
+            System.out.println();
+        } else if (op.equals("x")) {
+            System.out.println("O resultado de " + n[0] + " x " + n[1] + " = " + (n[0] * n[1]));
+            System.out.println();
+        } else if (op.equals("/")) {
+            if (n[1] == 0) {
+                System.out.println("Impossível realizar uma divisão por 0");
+                System.out.println();
+            } else {
+                System.out.println("O resultado de " + n[0] + " / " + n[1] + " = " + (n[0] / n[1]));
+                System.out.println();
+            }
+        } else if (op.equals("^")) {
+            System.out.println("O resultado de " + n[0] + " ^ " + n[1] + " = " + Math.pow(n[0],n[1]));
+            System.out.println();
+        } else if (op.equals("v")) {
+            if (n[0] < 0) {
+                System.out.println("Não existe raiz de número negativo");
+            } else {
+                System.out.println("O resultado de " + n[0] + " √ " + n[1] + " = " + Math.sqrt(n[0]));
+                System.out.println();
+            }
+        }
+    }
+}
